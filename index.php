@@ -30,7 +30,7 @@
         <a href="#" class="logo">Alibaba</a>
 
         <form action="" class="search-box-container">
-            <input type="search" id="search-box" placeholder="جستجو کنید">
+            <input type="search" id="search-box" placeholder="جستجو کنید..">
             <label for="search-box" class="fas fa-search"></label>
         </form>
 
@@ -41,7 +41,8 @@
         <div id="menu-bar" class="fas fa-bars"></div>
 
         <nav class="navbar">
-            <a href="#home">خانه</a>
+            <li class="is-sub active" href="#home" style="display: inline-block; position: relative;"><a href="#">صفحه اصلی</a>
+
 
             <?php
 
@@ -51,8 +52,13 @@
                 while($row=$stmt->fetch(PDO::FETCH_ASSOC)){
 
                     $title = $row['title'];
+                    $have_submenu = $row['submenu'];
 
-                    echo "<a href='#'> $title </a>";
+
+
+                    echo '<a href="#"> ';
+                        echo $title;
+                    echo ' </a>';
 
                 }
 
@@ -61,9 +67,9 @@
         </nav>
 
         <div class="icons">
-            <a href="#" class="fas fa-shopping-cart"></a>
-            <a href="#" class="fas fa-heart"></a>
-            <a href="#" class="fas fa-user-circle"></a>
+            <a href="#" class="fas fa-shopping-cart" title="سبد خرید"></a>
+            <a href="#" class="fas fa-heart" title="علاقه‌مندی‌ها"></a>
+            <a href="#" class="fas fa-user-circle" title="حساب کاربری"></a>
         </div>
 
     </div>
@@ -157,236 +163,36 @@
 
 <!-- product section starts  -->
 
+
+
 <section class="product" id="product">
 
     <h1 class="heading">آخرین <span>محصولات</span></h1>
 
     <div class="box-container">
 
-        <div class="box">
-            <span class="discount">-33%</span>
-            <div class="icons">
-                <a href="#" class="fas fa-heart"></a>
-                <a href="#" class="fas fa-share"></a>
-                <a href="#" class="fas fa-eye"></a>
-            </div>
-            <img src="images/product-1.png" alt="">
-            <h3>موز ارگانیک</h3>
-            <div class="stars">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star-half-alt"></i>
-            </div>
-            <div class="price"> $10.50 <span> $13.20 </span> </div>
-            <div class="quantity">
-                <span>تعداد : </span>
-                <input type="number" min="1" max="1000" value="1">
-                <span> /kg </span>
-            </div>
-            <a href="#" class="btn">افزودن به سبد خرید</a>
-        </div>
+        <?php
 
-        <div class="box">
-            <span class="discount">-45%</span>
-            <div class="icons">
-                <a href="#" class="fas fa-heart"></a>
-                <a href="#" class="fas fa-share"></a>
-                <a href="#" class="fas fa-eye"></a>
-            </div>
-            <img src="images/product-2.png" alt="">
-            <h3>گوجه فرنگی ارگانیک</h3>
-            <div class="stars">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star-half-alt"></i>
-            </div>
-            <div class="price"> $10.50 <span> $13.20 </span> </div>
-            <div class="quantity">
-                <span>تعداد : </span>
-                <input type="number" min="1" max="1000" value="1">
-                <span> /kg </span>
-            </div>
-            <a href="#" class="btn">افزودن به سبد خرید</a>
-        </div>
+        $query = "SELECT * FROM products LIMIT 9";
+        $stmt = $db->prepare($query);
+        $stmt->execute();
+        $recordCount = $stmt->rowCount();
+        while ($result = $stmt->fetch(PDO::FETCH_ASSOC)){
+            $title = $result['title'];
+            $image = $result['image'];
+            $price = $result['price'];
+            $discount = $result['discount'];
 
-        <div class="box">
-            <span class="discount">-52%</span>
-            <div class="icons">
-                <a href="#" class="fas fa-heart"></a>
-                <a href="#" class="fas fa-share"></a>
-                <a href="#" class="fas fa-eye"></a>
-            </div>
-            <img src="images/product-3.png" alt="">
-            <h3>پرتقال ارگانیک</h3>
-            <div class="stars">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star-half-alt"></i>
-            </div>
-            <div class="price"> $10.50 <span> $13.20 </span> </div>
-            <div class="quantity">
-                <span>تعداد : </span>
-                <input type="number" min="1" max="1000" value="1">
-                <span> /kg </span>
-            </div>
-            <a href="#" class="btn">افزودن به سبد خرید</a>
-        </div>
+                echo '<div class="box"> <span class="discount">-40%</span> <div class="icons"> <a href="#" class="fas fa-heart"></a> <a href="#" class="fas fa-share"></a> <a href="#" class="fas fa-eye"></a> </div> <img src="images/product-9.png" alt=""> <h3>هویج ارگانیک</h3> <div class="stars"> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star-half-alt"></i> </div> <div class="price"> $10.50 <span> $13.20 </span> </div> <div class="quantity"> <span>تعداد : </span> <input type="number" min="1" max="1000" value="1"> <span> کیلوگرم </span> </div> <a href="#" class="btn">افزودن به سبد خرید</a> </div>';
 
-        <div class="box">
-            <span class="discount">-13%</span>
-            <div class="icons">
-                <a href="#" class="fas fa-heart"></a>
-                <a href="#" class="fas fa-share"></a>
-                <a href="#" class="fas fa-eye"></a>
-            </div>
-            <img src="images/product-4.png" alt="">
-            <h3>شیر طبیعی</h3>
-            <div class="stars">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star-half-alt"></i>
-            </div>
-            <div class="price"> $10.50 <span> $13.20 </span> </div>
-            <div class="quantity">
-                <span>تعداد : </span>
-                <input type="number" min="1" max="1000" value="1">
-                <span> /kg </span>
-            </div>
-            <a href="#" class="btn">افزودن به سبد خرید</a>
-        </div>
+        }
 
-        <div class="box">
-            <span class="discount">-20%</span>
-            <div class="icons">
-                <a href="#" class="fas fa-heart"></a>
-                <a href="#" class="fas fa-share"></a>
-                <a href="#" class="fas fa-eye"></a>
-            </div>
-            <img src="images/product-5.png" alt="">
-            <h3>انگور ارگانیک</h3>
-            <div class="stars">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star-half-alt"></i>
-            </div>
-            <div class="price"> $10.50 <span> $13.20 </span> </div>
-            <div class="quantity">
-                <span>تعداد : </span>
-                <input type="number" min="1" max="1000" value="1">
-                <span> /kg </span>
-            </div>
-            <a href="#" class="btn">افزودن به سبد خرید</a>
-        </div>
 
-        <div class="box">
-            <span class="discount">-29%</span>
-            <div class="icons">
-                <a href="#" class="fas fa-heart"></a>
-                <a href="#" class="fas fa-share"></a>
-                <a href="#" class="fas fa-eye"></a>
-            </div>
-            <img src="images/product-6.png" alt="">
-            <h3>بادام طبیعی</h3>
-            <div class="stars">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star-half-alt"></i>
-            </div>
-            <div class="price"> $10.50 <span> $13.20 </span> </div>
-            <div class="quantity">
-                <span>تعداد : </span>
-                <input type="number" min="1" max="1000" value="1">
-                <span> /kg </span>
-            </div>
-            <a href="#" class="btn">افزودن به سبد خرید</a>
-        </div>
 
-        <div class="box">
-            <span class="discount">-55%</span>
-            <div class="icons">
-                <a href="#" class="fas fa-heart"></a>
-                <a href="#" class="fas fa-share"></a>
-                <a href="#" class="fas fa-eye"></a>
-            </div>
-            <img src="images/product-7.png" alt="">
-            <h3>سیب ارگانیک</h3>
-            <div class="stars">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star-half-alt"></i>
-            </div>
-            <div class="price"> $10.50 <span> $13.20 </span> </div>
-            <div class="quantity">
-                <span>تعداد : </span>
-                <input type="number" min="1" max="1000" value="1">
-                <span> /kg </span>
-            </div>
-            <a href="#" class="btn">افزودن به سبد خرید</a>
-        </div>
+        ?>
 
-        <div class="box">
-            <span class="discount">-30%</span>
-            <div class="icons">
-                <a href="#" class="fas fa-heart"></a>
-                <a href="#" class="fas fa-share"></a>
-                <a href="#" class="fas fa-eye"></a>
-            </div>
-            <img src="images/product-8.png" alt="">
-            <h3>کره طبیعی</h3>
-            <div class="stars">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star-half-alt"></i>
-            </div>
-            <div class="price"> $10.50 <span> $13.20 </span> </div>
-            <div class="quantity">
-                <span>تعداد : </span>
-                <input type="number" min="1" max="1000" value="1">
-                <span> /kg </span>
-            </div>
-            <a href="#" class="btn">افزودن به سبد خرید</a>
-        </div>
 
-<!--        <div class="box">-->
-<!--            <span class="discount">-40%</span>-->
-<!--            <div class="icons">-->
-<!--                <a href="#" class="fas fa-heart"></a>-->
-<!--                <a href="#" class="fas fa-share"></a>-->
-<!--                <a href="#" class="fas fa-eye"></a>-->
-<!--            </div>-->
-<!--            <img src="images/product-9.png" alt="">-->
-<!--            <h3>هویج ارگانیک</h3>-->
-<!--            <div class="stars">-->
-<!--                <i class="fas fa-star"></i>-->
-<!--                <i class="fas fa-star"></i>-->
-<!--                <i class="fas fa-star"></i>-->
-<!--                <i class="fas fa-star"></i>-->
-<!--                <i class="fas fa-star-half-alt"></i>-->
-<!--            </div>-->
-<!--            <div class="price"> $10.50 <span> $13.20 </span> </div>-->
-<!--            <div class="quantity">-->
-<!--                <span>تعداد : </span>-->
-<!--                <input type="number" min="1" max="1000" value="1">-->
-<!--                <span> /kg </span>-->
-<!--            </div>-->
-<!--            <a href="#" class="btn">افزودن به سبد خرید</a>-->
-<!--        </div>-->
+
 
     </div>
 

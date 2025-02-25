@@ -29,11 +29,16 @@
 }
 
 html{
-  font-size: .5rem;
+  font-size: 62.5%;
   overflow-x: hidden;
   scroll-padding-top: 6.5rem;
   scroll-behavior: smooth;
 }
+
+body{
+  font-size: 1.5rem;
+}
+
 img{
   user-select: none;
   -webkit-user-drag: none;
@@ -52,6 +57,7 @@ section{
   font-size: 1.7rem;
   text-align: center;
   cursor: pointer;
+  border-radius: .5rem;
 }
 
 .btn:hover{
@@ -63,7 +69,7 @@ section{
   color:var(--black);
   text-transform: uppercase;
   padding:1rem;
-  font-size: 3.5rem;
+  font-size: 2.5rem;
   padding-bottom: 2rem;
 }
 
@@ -94,22 +100,24 @@ section{
 .header-1 .search-box-container{
   display: flex;
   height:5rem;
+  border-radius: 1rem;
+  overflow: hidden;
 }
 
 .header-1 .search-box-container #search-box{
   height: 100%;
   width:100%;
   padding:1rem;
-  font-size: 2rem;
+  font-size: 1.5rem;
   color:#333;
-  border:.1rem solid rgba(0,0,0,.3);
+  /*border:.1rem solid rgba(0,0,0,.3);*/
   text-transform: none;
 }
 
 .header-1 .search-box-container label{
   height: 100%;
   width:8rem;
-  font-size: 2.5rem;
+  font-size: 2rem;
   line-height: 5rem;
   color:#fff;
   background:var(--green);
@@ -126,9 +134,14 @@ section{
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding:2rem 9%;
+  padding:1rem 9%;
   box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
   position: relative;
+}
+
+i.fa-caret-down{
+  display: table-cell;
+  padding-inline: 1rem;
 }
 
 .header-2.active{
@@ -139,7 +152,7 @@ section{
 
 .header-2 .navbar a{
   padding:.5rem 1.5rem;
-  font-size: 2rem;
+  font-size: 1.8rem;
   border-radius: .5rem;
   color:var(--black);
 }
@@ -259,12 +272,12 @@ section{
 }
 
 .category .box-container .box h3{
-  font-size: 3.5rem;
+  font-size: 2.5rem;
   color:var(--black);
 }
 
 .category .box-container .box p{
-  font-size: 2rem;
+  font-size: 1.5rem;
   color:#666;
   padding:.5rem 0;
 }
@@ -296,10 +309,12 @@ section{
 .product .box-container .box .discount{
   position: absolute;
   top:1rem; left: 1rem;
+  direction: ltr;
   background:rgba(0,255,0,.1);
   color:var(--green);
   padding:.7rem 1rem;
-  font-size: 2rem;
+  font-size: 1.5rem;
+  border-radius: .5rem;
 }
 
 .product .box-container .box .icons{
@@ -331,7 +346,7 @@ section{
 
 .product .box-container .box h3{
   color:var(--black);
-  font-size: 2.5rem;
+  font-size: 2rem;
 }
 
 .product .box-container .box .stars i{
@@ -341,7 +356,7 @@ section{
 }
 
 .product .box-container .box .price{
-  font-size: 2rem;
+  font-size: 1.5rem;
   color:#333;
   padding:.5rem 0;
 }
@@ -367,11 +382,12 @@ section{
 
 .product .box-container .box .quantity input{
   border:.1rem solid rgba(0,0,0,.3);
-  font-size: 1.5rem;
+  font-size: 1rem;
   font-weight: bolder;
   color:var(--black);
   padding:.5rem;
   background:rgba(0,0,0,.05);
+  width: 6rem;
 }
 
 .product .box-container .box .btn{
@@ -669,6 +685,8 @@ section{
   .header-1 .search-box-container{
     width:100%;
     margin-top: 2rem;
+    border-radius: .5rem;
+    overflow: hidden;
   }
 
   .logo{
