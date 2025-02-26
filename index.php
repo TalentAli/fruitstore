@@ -126,7 +126,7 @@
 
 <section class="category" id="category">
 
-    <h1 class="heading">خرید به وسیله ی <span>دسته بندی</span></h1>
+    <h1 class="heading">خرید از طریق <span>دسته بندی</span></h1>
 
     <div class="box-container">
 
@@ -182,8 +182,38 @@
             $image = $result['image'];
             $price = $result['price'];
             $discount = $result['discount'];
+            $supply = $result['supply'];
+            $disable = '';
+            $count = null;
 
-                echo '<div class="box"> <span class="discount">-40%</span> <div class="icons"> <a href="#" class="fas fa-heart"></a> <a href="#" class="fas fa-share"></a> <a href="#" class="fas fa-eye"></a> </div> <img src="images/product-9.png" alt=""> <h3>هویج ارگانیک</h3> <div class="stars"> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star-half-alt"></i> </div> <div class="price"> $10.50 <span> $13.20 </span> </div> <div class="quantity"> <span>تعداد : </span> <input type="number" min="1" max="1000" value="1"> <span> کیلوگرم </span> </div> <a href="#" class="btn">افزودن به سبد خرید</a> </div>';
+//            supply
+            if ($supply > 0){
+                $count = 1;
+                $supplyMsg = "<span style='color: #27ae60; margin-block: 1rem;display: inline-block'> موجود: $supply کیلوگرم </span>";
+            }else{
+                $supplyMsg = "<span style='color: #bc0303; margin-block: 1rem;display: inline-block'>موجود نیست </span>";
+                $disable = 'disabled';
+                $count = 0;
+            }
+//          discount
+            if ($discount){
+                $priceWithDiscount = (intval($price) * intval($discount) / 100);
+                $priceWithDiscount = number_format($priceWithDiscount);
+                $discount = "%" . $discount;
+            }else{
+                $priceWithDiscount = $price;
+                $priceWithDiscount = number_format($price);
+                $price = '';
+            }
+
+
+
+                echo '<div class="box"> <span class="discount">'.$discount.'</span> <div class="icons"> 
+                <a href="#" class="fas fa-heart"></a> <a href="#" class="fas fa-share"></a> <a href="#" class="fas fa-eye"></a> </div> 
+                <img src="images/'.$image.'" alt=""> <h3>'.$title.'</h3> <div class="stars"> <i class="fas fa-star"></i> <i class="fas fa-star"></i> 
+                <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star-half-alt"></i> </div> <div class="price"> '.$priceWithDiscount.' تومان<span> '.$price.'  </span> </div> 
+                <div class="quantity"> <span>تعداد : </span> <input type="number" min="1" max="100" value="'.$count.'" '.$disable.'> <span> کیلوگرم </span> </div>
+                 '.$supplyMsg.' <a href="#" class="btn">افزودن به سبد خرید</a> </div>';
 
         }
 

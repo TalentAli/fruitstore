@@ -65,12 +65,11 @@ section{
 }
 
 .heading{
-  text-align: center;
   color:var(--black);
   text-transform: uppercase;
-  padding:1rem;
-  font-size: 2.5rem;
-  padding-bottom: 2rem;
+  font-size: 2.9rem;
+  padding-bottom: 3rem;
+  margin-top: 3rem;
 }
 
 .heading span{
@@ -317,6 +316,10 @@ i.fa-caret-down{
   border-radius: .5rem;
 }
 
+.product .box-container .box .discount:empty{
+  display: none;
+}
+
 .product .box-container .box .icons{
   position: absolute;
   top:.5rem; right:-6rem;
@@ -363,6 +366,8 @@ i.fa-caret-down{
 
 .product .box-container .box .price span{
   font-size: 1.5rem;
+  margin-right: 1.5rem;
+  display: inline-block;
   color:#999;
   text-decoration: line-through;
 }
